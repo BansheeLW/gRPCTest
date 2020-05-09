@@ -1,0 +1,29 @@
+syntax="proto3";
+
+package server_hello_proto;
+
+message HelloRequest {
+    string name = 1;
+    int64 age = 2;
+}
+
+message HelloResponse{
+    string name = 1;
+    int64 age = 2;
+}
+
+message FeedRequest {
+    string meat = 1;
+    int64 weight = 2;
+}
+
+message FeedResponse {
+    int64 howlCount = 1;
+}
+
+
+service TigerService {
+    rpc HelloTiger (HelloRequest) returns (HelloResponse);
+    rpc FeedTiger(FeedRequest) returns (FeedResponse);
+    rpc Channel (stream FeedRequest) returns (stream FeedResponse);
+}
